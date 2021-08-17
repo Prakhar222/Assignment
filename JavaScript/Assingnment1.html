@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        form {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form>
+            <fieldset aria-setsize="2">
+                <legend>Room Booking</legend>
+                <fieldset>
+                    <label>From</label>
+                    <input type="date" id="date" name="From">
+                    <label>To</label>
+                    <input type="date" id="date1" name="To">
+                    <br><br>
+                    <label>Purpose</label>
+                    <input type="text" id="purpose" name="purpose">
+                    <label>Number of people Expected</label>
+                    <input type="text" id="people" name="people">
+                    <br><br>
+                    <label>Employee-Id</label>
+                    <input type="text" id="employee" name="employee">
+                    <label>Phone-Number</label>
+                    <input type="text" id="number" name="number">
+                    <br><br>
+                    <label>Room Name</label>
+                    <input type="text" id="room" name="room">
+
+                    <label>Duration</label>
+                    <input type="text" id="duration" name="duration">
+
+                    <br>
+
+                </fieldset>
+    </center>
+    </fieldset>
+    <center>
+        <fieldset style="width:0px">
+            <button type="button" onclick="getInputValue();">Book Room</button>
+
+        </fieldset>
+    </center>
+    <br>
+    </form>
+    
+        <script  type="text/javascript">
+
+
+            function getInputValue() {
+                // Selecting the input element and get its value 
+                var inputVal = document.getElementById("date").value;
+                var inputVal1 = document.getElementById("date1").value;
+                var inputVal2 = document.getElementById("purpose").value;
+                var inputVal3 = document.getElementById("people").value;
+                var inputVal5 = document.getElementById("employee").value;
+                var inputVal6 = document.getElementById("number").value;
+                var inputVal7 = document.getElementById("room").value;
+                var inputVal8 = document.getElementById("duration").value;
+
+                // Displaying the value
+                document.write("From-Date:  ");
+                document.write(inputVal);
+
+
+                document.write("<br>To-Date:  ");
+                document.writeln(inputVal1);
+
+                document.write("<br>Purpose:  ");
+                document.writeln(inputVal2);
+
+                document.write("<br>People:  ");
+                document.writeln(inputVal3);
+
+                button = document.createElement( "Delete");
+
+
+            }
+
+           
+        </script>
+
+
+
+</body>
+
+</html>
