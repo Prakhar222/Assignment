@@ -1,0 +1,57 @@
+mysql>  CREATE TABLE Insects (
+    ->    Id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ->    PRIMARY KEY (id),
+    ->    Name VARCHAR(30) NOT NULL,
+    ->    Type VARCHAR(30) NOT NULL,
+    ->    Origin VARCHAR(30) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> INSERT INTO Insects (Name, Type, Origin) VALUES
+    ->     ('Cockroach', 'Crawling', 'Kitchen'),
+    ->     ('Mosquito', 'Flying', 'Driveway'),
+    ->     ('Spider' ,'Crawling', 'Court yard'),
+    ->     ('Grasshopper', 'Flying', 'Front yard');
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM Insects;
++----+-------------+----------+------------+
+| Id | Name        | Type     | Origin     |
++----+-------------+----------+------------+
+|  1 | Cockroach   | Crawling | Kitchen    |
+|  2 | Mosquito    | Flying   | Driveway   |
+|  3 | Spider      | Crawling | Court yard |
+|  4 | Grasshopper | Flying   | Front yard |
++----+-------------+----------+------------+
+4 rows in set (0.00 sec)
+
+mysql>  INSERT INTO Insects (Id, Name, Type, Origin) VALUES
+    -> (6, 'Bee', 'Flying', 'Court yard'),
+    -> (7, 'Ant', 'Crawling', 'Front yard');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> desc Insects;
++--------+------------------+------+-----+---------+----------------+
+| Field  | Type             | Null | Key | Default | Extra          |
++--------+------------------+------+-----+---------+----------------+
+| Id     | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| Name   | varchar(30)      | NO   |     | NULL    |                |
+| Type   | varchar(30)      | NO   |     | NULL    |                |
+| Origin | varchar(30)      | NO   |     | NULL    |                |
++--------+------------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from Insects;
++----+-------------+----------+------------+
+| Id | Name        | Type     | Origin     |
++----+-------------+----------+------------+
+|  1 | Cockroach   | Crawling | Kitchen    |
+|  2 | Mosquito    | Flying   | Driveway   |
+|  3 | Spider      | Crawling | Court yard |
+|  4 | Grasshopper | Flying   | Front yard |
+|  6 | Bee         | Flying   | Court yard |
+|  7 | Ant         | Crawling | Front yard |
++----+-------------+----------+------------+
+6 rows in set (0.00 sec)

@@ -1,0 +1,43 @@
+-- select * from orderstran;
+-- select * from employeetran; 
+-- SET autocommit = OFF;
+-- START TRANSACTION; 
+-- SELECT @income:= MAX(income) FROM employeetran;  
+-- INSERT INTO employeetran(emp_Id, emp_Name, emp_Age, city, income)   
+-- VALUES (111, 'Alexander', 45, 'California', 70000);
+-- INSERT INTO orderstran(order_Id, product_Name, order_Num, order_Date)   
+-- VALUES (6, 'Printer', 5654, '2020-01-10');  
+-- COMMIT;
+-- START TRANSACTION;  
+--   
+-- SELECT * FROM orderstran;  
+--   
+-- INSERT INTO Orderstran(order_Id, product_Name, order_Num, order_Date)   
+-- VALUES (6, 'Printer', 5654, '2020-01-10');  
+--   
+-- SAVEPOINT my_savepoint;  
+--   
+-- INSERT INTO Orderstran(order_Id, product_Name, order_Num, order_Date)  
+-- VALUES (7, 'Ink', 5894, '2020-03-10');  
+--   
+-- ROLLBACK TO SAVEPOINT my_savepoint;  
+--   
+-- INSERT INTO Orderstran(order_Id, product_Name, order_Num, order_Date)
+-- VALUES (8, 'Speaker', 6065, '2020-02-18');  
+--   
+-- COMMIT;  
+ 
+ 
+-- START TRANSACTION;  
+--   
+-- INSERT INTO Orderstran(order_Id, product_Name, order_Num, order_Date)  
+-- VALUES (7, 'Ink', 5894, '2020-03-10');  
+--   
+-- SAVEPOINT my_savepoint;  
+--   
+-- UPDATE Orderstran SET product_Name='Scanner' WHERE order_Id=8;  
+--   
+-- RELEASE SAVEPOINT my_savepoint;  
+--   
+-- COMMIT;  
+-- SELECT * FROM orderstran; 

@@ -1,0 +1,17 @@
+-- select * from cities;
+-- REPLACE INTO cities(id,population)
+-- values(2,55556565);
+-- select * from cities;
+-- REPLACE INTO cities
+-- SET id = 4,
+--     city_name = 'Bhopal',
+--     population = 1768980; 
+-- select * from cities;
+-- REPLACE INTO cities
+-- SET id = 1,
+--     city_name = 'Jabalpur',
+--     population = 2768980; 
+-- select * from cities;    
+-- REPLACE INTO cities(id,population)
+-- values(2,555);
+--  select * from cities;   

@@ -1,0 +1,135 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employee           |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.06 sec)
+
+mysql> CREATE TABLE EMPLOYEENEW(
+    -> EmpID int NOT NULL,
+    -> LastName varchar(225),
+    -> FirstName varchar(225),
+    -> EmpAge int
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> decs employeenew;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'decs employeenew' at line 1
+mysql> DESC EMPLOYEENEW;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpID     | int(11)      | NO   |     | NULL    |       |
+| LastName  | varchar(225) | YES  |     | NULL    |       |
+| FirstName | varchar(225) | YES  |     | NULL    |       |
+| EmpAge    | int(11)      | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+
++-------+----------+-----------+--------+
+| EmpID | LastName | FirstName | EmpAge |
++-------+----------+-----------+--------+
+|     1 | Gupta    | Prkhar    |     21 |
+|     2 | Patel    | Rahul     |     33 |
++-------+----------+-----------+--------+
+2 rows in set (0.01 sec)
+
+mysql> create table employee2(
+    -> EmpID int NOT NUll,
+    -> FirstName varchar(224);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> create table employee2(
+    -> EmpID int NOT NUll,
+    -> FirstName varchar(224),
+    -> LastName varchar(224),
+    -> UNIQUE(EmpID)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc employee2;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpID     | int(11)      | NO   | PRI | NULL    |       |
+| FirstName | varchar(224) | YES  |     | NULL    |       |
+| LastName  | varchar(224) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create table employee3(
+    -> EmpID int NOT NUll,
+    -> FirstName varchar(224),
+    -> LastName varchar(224),
+    -> EmpAGE int,
+    -> Check(EmpAge>20)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc employee3;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpID     | int(11)      | NO   |     | NULL    |       |
+| FirstName | varchar(224) | YES  |     | NULL    |       |
+| LastName  | varchar(224) | YES  |     | NULL    |       |
+| EmpAGE    | int(11)      | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEENEW(EmpID,FirstName,LastName,EmpAge)
+    -> Values(2,'Patel','Rahul',33);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEENEW(EmpID,LastName,FirstName,EmpAge)
+    -> ();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 2
+mysql> INSERT INTO EMPLOYEENEW(EmpID,FirstName,LastName,EmpAge)
+    -> Values(2,'Patel','Rahul',12);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table employee3(
+    -> EmpID int NOT NUll,
+    -> FirstName varchar(224),
+    -> LastName varchar(224),
+    -> EmpAGE int,
+    -> Check(EmpAGE>20)
+    -> );
+ERROR 1050 (42S01): Table 'employee3' already exists
+mysql> create table employee4(
+    -> EmpID int NOT NUll,
+    -> FirstName varchar(224),
+    -> LastName varchar(224),
+    -> EmpAGE int,
+    -> Check(EmpAGE>20)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc employee4;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpID     | int(11)      | NO   |     | NULL    |       |
+| FirstName | varchar(224) | YES  |     | NULL    |       |
+| LastName  | varchar(224) | YES  |     | NULL    |       |
+| EmpAGE    | int(11)      | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> INSERT INTO employee4(EmpID,FirstName,LastName,EmpAge)
+    -> Values(2,'Patel','Rahul',12);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee4;
++-------+-----------+----------+--------+
+| EmpID | FirstName | LastName | EmpAGE |
++-------+-----------+----------+--------+
+|     2 | Patel     | Rahul    |     12 |
++-------+-----------+----------+--------+
+1 row in set (0.00 sec)
+

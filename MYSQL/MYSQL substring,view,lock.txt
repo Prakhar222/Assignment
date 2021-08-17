@@ -1,0 +1,207 @@
+ysql> select depAddress,depId,department1.deptName from emp inner join department1 using(deptName);
++------------+-------+----------+
+| depAddress | depId | deptName |
++------------+-------+----------+
+| Indore     |   100 | IT       |
+| Pune       |   101 | Test     |
++------------+-------+----------+
+2 rows in set (0.02 sec)
+
+mysql> select * from emp;
++-------+----------+
+| EmpId | deptName |
++-------+----------+
+|     4 | Arjun    |
+|     3 | IT       |
+|     4 | Test     |
++-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select depAddress,depId,department1.deptName from emp left join department1 using(deptName);
++------------+-------+----------+
+| depAddress | depId | deptName |
++------------+-------+----------+
+| Indore     |   100 | IT       |
+| Pune       |   101 | Test     |
+| NULL       |  NULL | NULL     |
++------------+-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select depAddress,depId,department1.deptName from emp right join department1 using(deptName);
++------------+-------+----------+
+| depAddress | depId | deptName |
++------------+-------+----------+
+| Pune       |   100 | HR       |
+| Indore     |   100 | IT       |
+| Pune       |   101 | Test     |
++------------+-------+----------+
+3 rows in set (0.01 sec)
+
+mysql> select empID,depName,emp.deptName from emp right join department1 using(deptName);
+ERROR 1054 (42S22): Unknown column 'depName' in 'field list'
+mysql> select empID,deptName,emp.deptName from emp right join department1 using(deptName);
++-------+----------+----------+
+| empID | deptName | deptName |
++-------+----------+----------+
+|     3 | IT       | IT       |
+|     4 | Test     | Test     |
+|  NULL | HR       | NULL     |
++-------+----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select empID,depId from emp
+    -> select empID,depId from department1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select empID,depId from department1' at line 2
+mysql> select * from emp
+    -> UNION
+    -> select * from department1;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+mysql> create table student(
+    -> stuId not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null' at line 2
+mysql> create table student(
+    -> depId int NOT NULL,
+    -> deptName varchar(223),;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> create table student(
+    -> depId int NOT NULL,
+    -> deptName varchar(223),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4
+mysql> create table student(
+    -> depId int NOT NULL,
+    -> deptName varchar(223)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO student(depId,deptName)
+    -> values(4,'HR');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from department1
+    -> UNION
+    -> select * from student;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+mysql> create table student1(
+    -> depId int NOT NULL,
+    -> deptName varchar(223)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO student(depId,deptName)
+    -> values(4,'HR');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO student(depId,deptName)
+    -> values(5,'IT');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table department2(
+    -> depId int NOT NULL,
+    -> deptName varchar(223)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO student(depId,deptName)
+    -> INSERT INTO student(depId,deptName);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO student(depId,deptName)' at line 2
+mysql> INSERT INTO department2(depId,deptName);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> INSERT INTO department2(depId,deptName)
+    -> values(5,'IT');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> values(5,'Test');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(5,'Test')' at line 1
+mysql> INSERT INTO department2(depId,deptName)
+    -> values(6,'Test');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student
+    -> UNION
+    -> select * from department2
+    -> ;
++-------+----------+
+| depId | deptName |
++-------+----------+
+|     4 | HR       |
+|     5 | IT       |
+|     6 | Test     |
++-------+----------+
+3 rows in set (0.01 sec)
+
+mysql> select * from student
+    -> UNION ALL
+    -> select * from department2;
++-------+----------+
+| depId | deptName |
++-------+----------+
+|     4 | HR       |
+|     4 | HR       |
+|     5 | IT       |
+|     5 | IT       |
+|     6 | Test     |
++-------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student;
++-------+----------+
+| depId | deptName |
++-------+----------+
+|     4 | HR       |
+|     4 | HR       |
+|     5 | IT       |
++-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> create view dep as select * from department1 where deptName="IT";
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from dep;
++-------+----------+------------+
+| depId | deptName | depAddress |
++-------+----------+------------+
+|   100 | IT       | Indore     |
++-------+----------+------------+
+1 row in set (0.02 sec)
+
+mysql> select * from department1 where depId in(select depId from department1 where depId>100);
++-------+----------+------------+
+| depId | deptName | depAddress |
++-------+----------+------------+
+|   101 | Test     | Pune       |
++-------+----------+------------+
+1 row in set (0.02 sec)
+
+mysql> select * from department1 where depId IN(select MIN(depId) from department1);
++-------+----------+------------+
+| depId | deptName | depAddress |
++-------+----------+------------+
+|   100 | HR       | Pune       |
+|   100 | IT       | Indore     |
++-------+----------+------------+
+2 rows in set (0.01 sec)
+
+mysql> lock tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> lock tables department1 reads;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reads' at line 1
+mysql> LOCK TABLES department1 READ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student;
+ERROR 1100 (HY000): Table 'student' was not locked with LOCK TABLES
+mysql> select * from dep;
+ERROR 1100 (HY000): Table 'dep' was not locked with LOCK TABLES
+mysql> UNLOCK TABLES;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from dep;
++-------+----------+------------+
+| depId | deptName | depAddress |
++-------+----------+------------+
+|   100 | IT       | Indore     |
++-------+----------+------------+
+1 row in set (0.00 sec)
+
+mysql> LOCK TABLES;

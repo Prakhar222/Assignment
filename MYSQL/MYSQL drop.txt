@@ -1,0 +1,105 @@
+
+mysql> LOCK TABLES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| dep                |
+| department         |
+| department1        |
+| department2        |
+| emp                |
+| employee           |
+| employee2          |
+| employee3          |
+| employee4          |
+| employee5          |
+| employee6          |
+| employeenew        |
+| student            |
+| student1           |
++--------------------+
+14 rows in set (0.01 sec)
+
+mysql> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| id          | int(11)     | YES  |     | NULL    |       |
+| name        | varchar(30) | YES  |     | NULL    |       |
+| designation | varchar(30) | YES  |     | NULL    |       |
+| salary      | double      | YES  |     | NULL    |       |
+| address     | varchar(40) | YES  |     | NULL    |       |
+| department  | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> desc employee2;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpID     | int(11)      | NO   | PRI | NULL    |       |
+| FirstName | varchar(224) | YES  |     | NULL    |       |
+| LastName  | varchar(224) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc employee4;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpID     | int(11)      | NO   |     | NULL    |       |
+| FirstName | varchar(224) | YES  |     | NULL    |       |
+| LastName  | varchar(224) | YES  |     | NULL    |       |
+| EmpAGE    | int(11)      | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> DROP employee4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employee4' at line 1
+mysql> DROP TABLE employee4;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| dep                |
+| department         |
+| department1        |
+| department2        |
+| emp                |
+| employee           |
+| employee2          |
+| employee3          |
+| employee5          |
+| employee6          |
+| employeenew        |
+| student            |
+| student1           |
++--------------------+
+13 rows in set (0.00 sec)
+
+mysql> select * from department1 where depId in(select depId from department1 where depId==100);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==100)' at line 1
+mysql> select * from department1 where depId in(select depId from department1 where depId=100);
++-------+----------+------------+
+| depId | deptName | depAddress |
++-------+----------+------------+
+|   100 | HR       | Pune       |
+|   100 | IT       | Indore     |
++-------+----------+------------+
+2 rows in set (0.00 sec)
+
+mysql> create view dep as select * from department1 where deptName="HR";
+ERROR 1050 (42S01): Table 'dep' already exists
+mysql> create view dep as select * from department1 where depId=101;
+ERROR 1050 (42S01): Table 'dep' already exists
+mysql> select * from dep;
++-------+----------+------------+
+| depId | deptName | depAddress |
++-------+----------+------------+
+|   100 | IT       | Indore     |
++-------+----------+------------+
+1 row in set (0.00 sec)

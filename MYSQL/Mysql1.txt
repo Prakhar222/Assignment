@@ -1,0 +1,386 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.7.12-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databse;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databse' at line 1
+mysql> show databsese;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databsese' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employee           |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| employee           |
+| employee2          |
+| employee3          |
+| employee4          |
+| employee5          |
+| employee6          |
+| employeenew        |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> desc
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| id          | int(11)     | YES  |     | NULL    |       |
+| name        | varchar(30) | YES  |     | NULL    |       |
+| designation | varchar(30) | YES  |     | NULL    |       |
+| salary      | double      | YES  |     | NULL    |       |
+| address     | varchar(40) | YES  |     | NULL    |       |
+| department  | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> desc employee6;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| FirstName | varchar(224) | YES  |     | NULL    |       |
+| LastName  | varchar(224) | YES  |     | NULL    |       |
+| EmpAGE    | int(11)      | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc employee2;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpID     | int(11)      | NO   | PRI | NULL    |       |
+| FirstName | varchar(224) | YES  |     | NULL    |       |
+| LastName  | varchar(224) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc employee3;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpID     | int(11)      | NO   |     | NULL    |       |
+| FirstName | varchar(224) | YES  |     | NULL    |       |
+| LastName  | varchar(224) | YES  |     | NULL    |       |
+| EmpAGE    | int(11)      | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table department(
+    -> deptName int not null
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> create table department(
+    -> deptName int not null ,
+    -> dept_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> create table department(
+    -> deptName int not null ,
+    -> depId varchar<333>,
+    -> primary key<deptName>
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<333>,
+primary key<deptName>
+)' at line 3
+mysql> create table department(
+    -> deptName int not null ,
+    -> dept_id varchar(222)
+    -> primary key(depName)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(depName)
+)' at line 4
+mysql> create table employee2(
+    ->     -> EmpID int NOT NUll,
+    ->     -> FirstName varchar(224),
+    ->     -> LastName varchar(224),
+    ->     -> UNIQUE(EmpID)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> EmpID int NOT NUll,
+    -> FirstName varchar(224),
+    -> LastName varchar(22' at line 2
+mysql> create table department(
+    -> deptName int NOT NULL,
+    -> depId varchar(224),
+    -> depAddress varchar(224),
+    -> PRIMARY KEY(deptName)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc department;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| deptName   | int(11)      | NO   | PRI | NULL    |       |
+| depId      | varchar(224) | YES  |     | NULL    |       |
+| depAddress | varchar(224) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO department(deptName,deptId,depAddress)
+    -> VALUES('IT',001,'Indore');
+ERROR 1054 (42S22): Unknown column 'deptId' in 'field list'
+mysql> create table department(
+    -> deptName int NOT NULL,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> create table department(
+    -> depId int NOT NULL,
+    -> deptName varchar(223),
+    -> depAddress varchar(223),
+    -> PRIMARY KEY(deptName)
+    -> );
+ERROR 1050 (42S01): Table 'department' already exists
+mysql> create table department1(
+    -> depId int NOT NULL,
+    -> deptName varchar(223),
+    -> depAddress varchar(223),
+    -> PRIMARY KEY(deptName)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc deparment1;
+ERROR 1146 (42S02): Table 'employee.deparment1' doesn't exist
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| department         |
+| department1        |
+| employee           |
+| employee2          |
+| employee3          |
+| employee4          |
+| employee5          |
+| employee6          |
+| employeenew        |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> desc departments;
+ERROR 1146 (42S02): Table 'employee.departments' doesn't exist
+mysql> INSERT INTO department(depId,deptName,depAddress)
+    -> values(001,'IT','Indore');
+ERROR 1366 (HY000): Incorrect integer value: 'IT' for column 'deptName' at row 1
+mysql> desc department1;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| depId      | int(11)      | NO   |     | NULL    |       |
+| deptName   | varchar(223) | NO   | PRI | NULL    |       |
+| depAddress | varchar(223) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO department(depId,deptName,depAddress)
+    -> values(001,'IT','Indore');
+ERROR 1366 (HY000): Incorrect integer value: 'IT' for column 'deptName' at row 1
+mysql> INSERT INTO department(depId,deptName,depAddress)
+    -> values(100,'IT','Indore');
+ERROR 1366 (HY000): Incorrect integer value: 'IT' for column 'deptName' at row 1
+mysql> use department1;
+ERROR 1049 (42000): Unknown database 'department1'
+mysql> desc department1;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| depId      | int(11)      | NO   |     | NULL    |       |
+| deptName   | varchar(223) | NO   | PRI | NULL    |       |
+| depAddress | varchar(223) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO department1(depId,deptName,depAddress)
+    -> values(100,'IT','Indore');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO department1(depId,deptName,depAddress)
+    -> values(100,'HR','Pune');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> values(100,'Normal','Pune');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(100,'Normal','Pune')' at line 1
+mysql> INSERT INTO department1(depId,deptName,depAddress)
+    -> values(101,'Test','Pune');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| department         |
+| department1        |
+| employee           |
+| employee2          |
+| employee3          |
+| employee4          |
+| employee5          |
+| employee6          |
+| employeenew        |
++--------------------+
+9 rows in set (0.01 sec)
+
+mysql> show department1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'department1' at line 1
+mysql> select * from department1;
++-------+----------+------------+
+| depId | deptName | depAddress |
++-------+----------+------------+
+|   100 | HR       | Pune       |
+|   100 | IT       | Indore     |
+|   101 | Test     | Pune       |
++-------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee2;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO employee2(EmpId,FirstName,LastName)
+    -> values(1,'Ram','Patel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO employee2(EmpId,FirstName,LastName)
+    -> values(2,'Krishna','Gupta');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employee2(EmpId,FirstName,LastName)
+    -> values(3,'Tanu','Jain');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee2;
++-------+-----------+----------+
+| EmpID | FirstName | LastName |
++-------+-----------+----------+
+|     1 | Ram       | Patel    |
+|     2 | Krishna   | Gupta    |
+|     3 | Tanu      | Jain     |
++-------+-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from department1;
++-------+----------+------------+
+| depId | deptName | depAddress |
++-------+----------+------------+
+|   100 | HR       | Pune       |
+|   100 | IT       | Indore     |
+|   101 | Test     | Pune       |
++-------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> create table emp(
+    -> depId int NOT NULL,
+    -> deptName varchar(223),;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> create table emp(
+    -> EmpId int NOT NULL,
+    -> deptName varchar(223),
+    -> PRIMARY KEY(deptName)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO emp(EmpId,deptName)
+    -> values(3,'IT');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> values(3,);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(3,)' at line 1
+mysql> values(3,'');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(3,'')' at line 1
+mysql> values(3);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(3)' at line 1
+mysql> values(3,'NULL');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(3,'NULL')' at line 1
+mysql> values(3,NULL);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(3,NULL)' at line 1
+mysql> values(3,'0');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(3,'0')' at line 1
+mysql> values(3,'');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(3,'')' at line 1
+mysql> INSERT INTO emp(EmpId,deptName)
+    -> values(3,NULL);
+ERROR 1048 (23000): Column 'deptName' cannot be null
+mysql> values(4,'Arjun');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(4,'Arjun')' at line 1
+mysql> INSERT INTO emp(EmpId,deptName)
+    -> values(4,'Arjun');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO emp(EmpId,deptName)
+    -> values(4,'Test');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select depAddress,depId,department1.deptName from emp inner join department1 using(deptName);
++------------+-------+----------+
+| depAddress | depId | deptName |
++------------+-------+----------+
+| Indore     |   100 | IT       |
+| Pune       |   101 | Test     |
++------------+-------+----------+
+2 rows in set (0.02 sec)
+
+mysql> select * from emp;
++-------+----------+
+| EmpId | deptName |
++-------+----------+
+|     4 | Arjun    |
+|     3 | IT       |
+|     4 | Test     |
++-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select depAddress,depId,department1.deptName from emp left join department1 using(deptName);
++------------+-------+----------+
+| depAddress | depId | deptName |
++------------+-------+----------+
+| Indore     |   100 | IT       |
+| Pune       |   101 | Test     |
+| NULL       |  NULL | NULL     |
++------------+-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select depAddress,depId,department1.deptName from emp right join department1 using(deptName);
++------------+-------+----------+
+| depAddress | depId | deptName |
++------------+-------+----------+
+| Pune       |   100 | HR       |
+| Indore     |   100 | IT       |
+| Pune       |   101 | Test     |
++------------+-------+----------+
+3 rows in set (0.01 sec)
+
+mysql> select empID,depName,emp.deptName from emp right join department1 using(deptName);
+ERROR 1054 (42S22): Unknown column 'depName' in 'field list'
+mysql> select empID,deptName,emp.deptName from emp right join department1 using(deptName);
++-------+----------+----------+
+| empID | deptName | deptName |
++-------+----------+----------+
+|     3 | IT       | IT       |
+|     4 | Test     | Test     |
+|  NULL | HR       | NULL     |
++-------+----------+----------+
+3 rows in set (0.00 sec)
+
+mysql>  
