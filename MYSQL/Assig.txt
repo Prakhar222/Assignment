@@ -1,0 +1,92 @@
+Write a mysql statement to find the employee salary is greater than 
+SELECT * FROM employee Where salary is > 300000;
+
+ 
+
+Write mysql statement to show distinct departments
+SELECT DISTINCT  department from employee;
+
+ 
+
+Write mysql statement to get records of employees working in IT,Testing department.
+SELECT * FROM employee WHERE department IN("IT","Testing");
+
+ 
+
+Write mysql statements to get all department sin descending order
+SELECT * FROM employee ORDER BY department DESC;
+
+ 
+
+Write a mysql statement to create a table employee which already exists
+
+ 
+
+ 
+
+Write a mysql statement to find the Highest and lowest pais salary employee full record
+ 
+
+ 
+
+Write a mysql statement to find all the employees that have worked in at least 2 
+departments. Show their name ,departments they work in. Display all results in ascending 
+order.
+
+ 
+
+ 
+
+Write a mysql statement to create new database,use newly created database,create table 
+and check the list of tables and drop the table
+
+ 
+
+ 
+
+
+ Write a mysql statementto fetch employee records whose designation is manager and 
+salary is between 200000 to 300000
+SELECT * FROM employee WHERE where designation = 'manager';
+SELECT * FROM employee WHERE designation IN(SELECT designation FROM employee WHERE salary BETWEEN 200000 AND 300000);
+
+ 
+
+ 
+
+Write a mysql statement to update the salary by 20000 in Accounts department
+
+ 
+
+ 
+
+Write a mysql statement to alter table by adding new column as doj(date of joining) into 
+the employee table
+ALTER table employee ADD doj DATE;
+
+ 
+
+Write a mysql statement to rename the employee table.
+ALTER table employee RENAME to employee1;
+
+ 
+
+Write a mysql statement to get names which are NOT NULL.
+SELECT * FROM employee WHERE name IS NOT NULL;
+
+ 
+
+Write a mysql statement to get null doj values
+SELECT * FROM employee WHERE doj IS NOT NULL;
+
+ 
+
+Write a mysql statement to get salary between 100000 to 20000 in Accounts and IT 
+department
+SELECT * FROM employee WHERE salary BETWEEN 100000 AND 20000 AND department IN ('Account','IT');
+
+ 
+
+
+Write a mysql statement to show the use of ANY
+SELECT name FROM employee WHERE Salary = ANY (SELECT Salary FROM employee WHERE Salary = 300000);
