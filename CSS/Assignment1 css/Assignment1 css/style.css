@@ -1,0 +1,21 @@
+p{
+    color: brown;
+}
+legend{
+    color: green;
+}
+span.sc{
+    background-color: aqua;
+}
+/* id */
+span#si{
+    background-color: blue;
+}
+/* element */
+span{
+    color: brown;
+}
+/* class */
+ul.uc{
+    background-color: black;
+}
