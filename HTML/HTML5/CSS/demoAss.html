@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        form {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form>
+            <fieldset aria-setsize="2">
+                <legend>Room Booking</legend>
+                <fieldset>
+                    <label>From</label>
+                    <input type="date" id="date" name="From">
+                    <label>To</label>
+                    <input type="date" id="date1" name="To">
+                    <br><br>
+                    <label>Purpose</label>
+                    <input type="text" id="purpose" name="purpose">
+                    <label>Number of people Expected</label>
+                    <input type="text" id="people" name="people">
+                    <br><br>
+                    <label>Employee-Id</label>
+                    <input type="text" id="employee" name="employee">
+                    <label>Phone-Number</label>
+                    <input type="text" id="number" name="number">
+                    <br><br>
+                    <label>Room Name</label>
+                    <input type="text" id="room" name="room">
+
+                    <label>Duration</label>
+                    <input type="text" id="duration" name="duration">
+
+                    <br>
+
+                </fieldset>
+    </center>
+    </fieldset>
+    <center>
+        <fieldset style="width:0px">
+            <button type="button" onclick="getInputValue();">Book Room</button>
+
+        </fieldset>
+    </center>
+    <br>
+
+
+    </form>
+    <fieldset style="width: 0px;">
+    <table border="2" id="Show">
+        <thead>
+            <tr>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Purpose</th>
+
+            </tr>
+        </thead>
+    </table>
+</fieldset>
+
+    <script type="text/javascript">
+
+
+        var list1 = [];
+        var list2 = [];
+        var list3 = [];
+
+        var n = 1;
+        var x = 0;
+        function getInputValue() {
+            // Selecting the input element and get its value 
+            var AddRow = document.getElementById("Show");
+            var NewRow = AddRow.insertRow(n);
+            list1[x] = document.getElementById("date").value;
+            list2[x] = document.getElementById("date1").value;
+            list3[x] = document.getElementById("purpose").value;
+            //  var inputVal1 = document.getElementById("date1").value;
+            //var inputVal2 = document.getElementById("purpose").value;
+            //var inputVal3 = document.getElementById("people").value;
+            //var inputVal5 = document.getElementById("employee").value;
+            //var inputVal6 = document.getElementById("number").value;
+            //var inputVal7 = document.getElementById("room").value;
+            //var inputVal8 = document.getElementById("duration").value;
+
+            var cel1 = NewRow.insertCell(0);
+            var cel2 = NewRow.insertCell(1);
+            var cel3 = NewRow.insertCell(2);
+            cel1.innerHTML = list1[x];
+            cel2.innerHTML = list2[x];
+            cel3.innerHTML = list3[x];
+            n++;
+            x++;
+        }
+    </script>
+
+
+
+</body>
+
+</html>
