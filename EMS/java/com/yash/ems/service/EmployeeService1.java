@@ -1,4 +1,9 @@
 package com.yash.ems.service;
+/*
+ * 
+ * author 
+ * Prakhar Gupta
+ */
 //We can create interface for declaring abstract methods
 //All methods in program are created here
 public interface EmployeeService1 {
