@@ -1,5 +1,9 @@
 package movieTicket;
-
+/*
+ * 
+ * author 
+ * Prakhar Gupta
+ */
 
 public class Ticket implements Runnable
 {
