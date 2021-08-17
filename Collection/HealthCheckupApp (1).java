@@ -1,5 +1,9 @@
 package com.yash.collectionassignment.main;
-
+/*
+ * 
+ * author 
+ * Prakhar Gupta
+ */
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
