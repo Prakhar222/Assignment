@@ -1,5 +1,5 @@
 
-package com.yash.exceptionhandlingassignment1;
+package com.yash.oopsconceptdemo.exceptions;
 import java.io.*;
 
 public class ListOfNumbers 
