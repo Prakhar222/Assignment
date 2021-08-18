@@ -1,4 +1,3 @@
-  
 package com.yash.newconcepts.io;
 
 import java.io.FileInputStream;
