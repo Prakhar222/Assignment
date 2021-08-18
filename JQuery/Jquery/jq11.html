@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+
+
+            $("#show").click(function () {
+                $("p:contains('Hello')").fadeIn(3000);
+
+            })
+        });
+    </script>
+    <style type="text/css">
+        p {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="submit" value="show" id="show" />
+    <h1>aaa</h1>
+    <p>
+        Hello
+    </p>
+    <p>
+        Hello1
+    </p>
+    <p>
+        Hello2
+    </p>
+    <p>
+        Hello3
+    </p>
+
+</body>
+
+</html>

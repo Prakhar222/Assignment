@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+            // Get value on button click and show alert
+            $("#myBtn").click(function () {
+                document.write("From-Date:  " + $("#date").val() + "<br>To-Date:  " + $("#date1").val() + "<br>Purpose:  " + $("#purpose").val());
+
+
+
+
+            });
+        });
+
+
+    </script>
+    <center>
+        <form>
+            <fieldset aria-setsize="2">
+                <legend>Room Booking</legend>
+                <fieldset>
+                    <label>From</label>
+                    <input type="date" id="date" name="From">
+                    <label>To</label>
+                    <input type="date" id="date1" name="To">
+                    <br><br>
+                    <label>Purpose</label>
+                    <input type="text" id="purpose" name="purpose">
+                    <label>Number of people Expected</label>
+                    <input type="text" id="people" name="people">
+                    <br><br>
+                    <label>Employee-Id</label>
+                    <input type="text" id="employee" name="employee">
+                    <label>Phone-Number</label>
+                    <input type="text" id="number" name="number">
+                    <br><br>
+                    <label>Room Name</label>
+                    <input type="text" id="room" name="room">
+
+                    <label>Duration</label>
+                    <input type="text" id="duration" name="duration">
+
+                    <br>
+
+                    <button type="button" id="myBtn">Book Room</button>
+                </fieldset>
+    </center>
+    </fieldset>
+
+    <br>
+    </form>
+    <center>
+        <fieldset style="width:0px">
+            <button type="button" onclick="getInputValue();">Book Room</button>
+
+
+        </fieldset>
+    </center>
+
+</body>
+
+</html>
