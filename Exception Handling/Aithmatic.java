@@ -1,4 +1,4 @@
-package com.yash.ExceptionAssinment;
+package com.yash.oopsconceptdemo.exceptions;
 
 public class Aithmatic {
 
